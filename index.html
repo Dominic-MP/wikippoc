@@ -22,29 +22,29 @@
             
             var fileNameEnabled = true;
             $(document).ready(function() {
-              if ("url" in args)
-                $("#ppocUrl").attr("value", args["url"]);
+              if ('url' in args)
+                $('#ppocUrl').attr('value', args['url']);
               
-              if ("file" in args) {
-                $("#ppocFile").attr("value", args["file"]);
+              if ('file' in args) {
+                $('#ppocFile').attr('value', args['file']);
                 fileNameEnabled = true;
-              } else if ($("#ppocFile").attr("value") === "" ||
-                         $("#ppocFile").attr("value") === "(optional)") {
-                $("#ppocFile").focus(function () {
-                  $("#ppocFile").css("color", "");
-                  $("#ppocFile").attr("value", "");
+              } else if ($('#ppocFile').attr('value') === "" ||
+                         $('#ppocFile').attr('value') === "(optional)") {
+                $('#ppocFile').focus(function () {
+                  $('#ppocFile').css('color', "");
+                  $('#ppocFile').attr('value', "");
                   fileNameEnabled = true;
                 });
-                $("#ppocFile").css("color", "#999");
-                $("#ppocFile").attr("value", "(optional)");
+                $('#ppocFile').css('color', '#999');
+                $('#ppocFile').attr('value', "(optional)");
                 fileNameEnabled = false;
               }
             });
 
             function lookup() {
-              var ppocUrl = $("#ppocUrl").attr("value");
+              var ppocUrl = $('#ppocUrl').attr('value');
               var ppocFile = fileNameEnabled
-                           ? $("#ppocFile").attr("value")
+                           ? $('#ppocFile').attr('value')
                            : undefined;
               wikippoc(ppocUrl, function(pic) {
                 var ppoc = $('<div id="ppoc">')
