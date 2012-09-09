@@ -44,9 +44,14 @@ form input {
     margin-right: 10px;
 }
 
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #wikitext {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .wikitext {
@@ -62,4 +67,8 @@ form input {
     right: 1em;
     bottom: 1em;
     text-decoration: none;
+}
+
+td.label {
+    text-align: right;
 }
