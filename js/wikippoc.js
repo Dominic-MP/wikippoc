@@ -51,7 +51,7 @@ function wikippoc(url, callback, fileNameOnCommons, style) {
       }
     }
 
-    // 
+    // variables which determine whether <ref> tags are used (i.e., if it's a footnote)
     var refStart = "";
     var refEnd = "";
     if (style == 'footnote') {
