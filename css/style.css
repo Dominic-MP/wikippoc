@@ -56,3 +56,10 @@ form input {
     text-align: left;
     word-wrap: break-word;
 }
+
+#about {
+    position: fixed;
+    right: 1em;
+    bottom: 1em;
+    text-decoration: none;
+}
