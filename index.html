@@ -46,13 +46,14 @@
               var ppocFile = fileNameEnabled
                            ? $('#ppocFile').attr('value')
                            : undefined;
+              var ppocCite = $('#ppocCite').attr('value');
               wikippoc(ppocUrl, function(pic) {
                 var ppoc = $('<div id="ppoc">')
                   .append('<a target="_new" href="' + pic.link + '"><img src="'+ pic.thumb_gallery + '"></a>')
                   .append("<br><span class='title'>" + pic.title + "</span>");
                 $("#ppoc").replaceWith(ppoc);
                 $("#wikitext").text(pic.wikitext);
-              }, ppocFile);
+              }, ppocFile, ppocCite);
             }
 
             $(document).ready(lookup);
@@ -67,7 +68,7 @@
             <div id="ppoc"></div>
             URL or LC Digital ID: <input id="ppocUrl" type="text" size="50" value="http://www.loc.gov/pictures/resource/cph.3c13276/"><br/>
             Commons file name:&nbsp; <input id="ppocFile" type="text" size="50" value=""><br/>
-            <input type="submit" value="generate">
+            <input id="ppocCite" type="radio" value="citation" name="style" /> Citation <input id="ppocCite" type="radio" value="footnote" name="style" checked /> Footnote &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="generate">
             <div id="wikitext"></div>
             Generate references list:
             <div id="wikitext">{{reflist|group=image}}</div>

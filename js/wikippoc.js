@@ -5,7 +5,7 @@
  * @fileNameOnCommons {String} optional; file name of image on Commons
  */
 
-function wikippoc(url, callback, fileNameOnCommons) {
+function wikippoc(url, callback, fileNameOnCommons, style) {
 
   function clean(s) {
     return s.replace(/ ?[.;:]$/, '');
@@ -51,8 +51,16 @@ function wikippoc(url, callback, fileNameOnCommons) {
       }
     }
 
+    // 
+    var refStart = "";
+    var refEnd = "";
+    if (style == 'footnote') {
+	refStart = '<ref group="image">'
+	refEnd = '</ref>'
+    }
+
     // generate wikitext from the ppoc metadata
-    item.wikitext = ('<ref group="image">{{User:Dominic/Cite|title=' +
+    item.wikitext = (refStart + '{{User:Dominic/Cite|title=' +
                      item.title +
                      '|creator=' + creators +
                      '|medium=' + medium +
@@ -61,7 +69,7 @@ function wikippoc(url, callback, fileNameOnCommons) {
                      '|repository=' + repository +
                      '|date=' + clean(item.date) +
                      '|file=' + cleanFileName +
-                     '}}</ref>');
+                     '}}' + refEnd );
     callback(item);
   }});
 }
