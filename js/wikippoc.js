@@ -3,9 +3,11 @@
  * @hint {String} either a PPOC url, handle or identifier
  * @callback {Function} callback that receives the JavaScript object
  * @fileNameOnCommons {String} optional; file name of image on Commons
+ * @bareCitation {Boolean} optional; if true, don't wrap in <ref> tags,
+ *                         defaults to false
  */
 
-function wikippoc(url, callback, fileNameOnCommons, style) {
+function wikippoc(url, callback, fileNameOnCommons, bareCitation) {
 
   function clean(s) {
     return s.replace(/ ?[.;:]$/, '');
@@ -51,17 +53,13 @@ function wikippoc(url, callback, fileNameOnCommons, style) {
       }
     }
 
-    // variables which determine whether <ref> tags are used (i.e., if it's a footnote)
-    var refStart = "";
-    var refEnd = "";
-    if (style == 'footnote') {
-	refStart = '<ref group="image">'
-	refEnd = '</ref>'
-    }
+    // bareCitation defaults to false (i.e., add <ref> wrapper)
+    if (typeof(bareCitation) == 'undefined')
+      bareCitation = false;
 
     // generate wikitext from the ppoc metadata
-    item.wikitext = (refStart + '{{User:Dominic/Cite|title=' +
-                     item.title +
+    item.wikitext = ((bareCitation ? '' : '<ref group="image">') + 
+                     '{{User:Dominic/Cite|title=' + item.title +
                      '|creator=' + creators +
                      '|medium=' + medium +
                      '|id=' + id +
@@ -69,7 +67,8 @@ function wikippoc(url, callback, fileNameOnCommons, style) {
                      '|repository=' + repository +
                      '|date=' + clean(item.date) +
                      '|file=' + cleanFileName +
-                     '}}' + refEnd );
+                     '}}' +
+                     (bareCitation ? '' : '</ref>'));
     callback(item);
   }});
 }
