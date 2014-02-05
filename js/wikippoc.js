@@ -59,7 +59,7 @@ function wikippoc(url, callback, fileNameOnCommons, bareCitation) {
 
     // generate wikitext from the ppoc metadata
     item.wikitext = ((bareCitation ? '' : '<ref group="image">') + 
-                     '{{User:Dominic/Cite|title=' + item.title +
+                     '{{cite image|title=' + item.title +
                      '|creator=' + creators +
                      '|medium=' + medium +
                      '|id=' + id +
